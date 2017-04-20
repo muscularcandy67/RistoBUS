@@ -25,6 +25,14 @@ public class Ordine {
         return portate;
     }
     
+    public void sostituisciPortata(Portata p1, Portata p2){
+        try{
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    
     public boolean aggiungiPortata(Portata p){
         portate.put(p.getCategoria(),p);
         return true;
@@ -54,5 +62,14 @@ public class Ordine {
         this.portate = portate;
     }
     
+    public double getPrezzoTotale(){
+        return 0.0; 
+    }
+    
+    public String toString(){
+        return "Ordine";
+    }
+    
+    public 
     
 }
