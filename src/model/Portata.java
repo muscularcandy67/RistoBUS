@@ -1,82 +1,141 @@
-/*
+package model;
+
+import java.util.*;
+
+/**
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
-package model;
-
-import java.util.Objects;
-
-/**
- *
  * @author Iskandar Montano
  */
 public class Portata {
-    private String categoria;
-    private String ID;
-    private String nome;
-    private double prezzo;
 
-    public Portata(String categoria, String ID, String nome, double prezzo) {
-        this.categoria = categoria;
-        this.ID = ID;
-        this.nome = nome;
-        this.prezzo = prezzo;
-    }
-    
-    public String getCategoria() {
-        return categoria;
-    }
+	/**
+	 * Default constructor
+	 */
+	public Portata() {
+	}
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
+	/**
+	 * 
+	 */
+	private String categoria;
 
-    public String getID() {
-        return ID;
-    }
+	/**
+	 * 
+	 */
+	private String ID;
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
+	/**
+	 * 
+	 */
+	private String nome;
 
-    public String getNome() {
-        return nome;
-    }
+	/**
+	 * 
+	 */
+	private double prezzo;
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	/**
+	 * @param categoria 
+	 * @param ID 
+	 * @param nome 
+	 * @param prezzo
+	 */
+	public void Portata(String categoria, String ID, String nome, double prezzo) {
+		// TODO implement here
+	}
 
-    public double getPrezzo() {
-        return prezzo;
-    }
+	/**
+	 * @return
+	 */
+	public String getCategoria() {
+		// TODO implement here
+		return "";
+	}
 
-    public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
-    }
+	/**
+	 * @param categoria 
+	 * @return
+	 */
+	public void setCategoria(String categoria) {
+		// TODO implement here
+		return null;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Portata other = (Portata) obj;
-        return Objects.equals(this.ID, other.ID);
-    }
+	/**
+	 * @return
+	 */
+	public String getID() {
+		// TODO implement here
+		return "";
+	}
 
-    
-    
-    @Override
-    public String toString() {
-        return "Portata{" + "categoria=" + categoria + ", ID=" + ID + ", nome=" + nome + ", prezzo=" + prezzo + '}';
-    }
-    
-    
+	/**
+	 * @param ID 
+	 * @return
+	 */
+	public void setID(String ID) {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getNome() {
+		// TODO implement here
+		return "";
+	}
+
+	/**
+	 * @param nome 
+	 * @return
+	 */
+	public void setNome(String nome) {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	public double getPrezzo() {
+		// TODO implement here
+		return 0.0d;
+	}
+
+	/**
+	 * @param prezzo 
+	 * @return
+	 */
+	public void setPrezzo(double prezzo) {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @param obj 
+	 * @return
+	 */
+	public boolean equals(Object obj) {
+		// TODO implement here
+		return false;
+	}
+
+	/**
+	 * @return
+	 */
+	public String toString() {
+		// TODO implement here
+		return "";
+	}
+
+	/**
+	 * 
+	 */
+	public void toFileFormat() {
+		// TODO implement here
+	}
+
 }

@@ -1,75 +1,110 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.util.*;
 
 /**
- *
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  * @author Iskandar Montano
  */
 public class Ordine {
-    private String nome_Cliente;
-    private Menu menu;
-    private Map<String,Portata> portate;
 
-    public Ordine(String nome_Cliente, Menu menu) {
-        this.nome_Cliente = nome_Cliente;
-        this.menu = menu;
-    }
-    
-    public Map getElencoPortate(){
-        return portate;
-    }
-    
-    public void sostituisciPortata(Portata p1, Portata p2){
-        try{
-            
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-    
-    public boolean aggiungiPortata(Portata p){
-        portate.put(p.getCategoria(),p);
-        return true;
-    }
+	/**
+	 * Default constructor
+	 */
+	public Ordine() {
+	}
 
-    public String getNome_Cliente() {
-        return nome_Cliente;
-    }
+	/**
+	 * 
+	 */
+	private String nome_Cliente;
 
-    public void setNome_Cliente(String nome_Cliente) {
-        this.nome_Cliente = nome_Cliente;
-    }
+	/**
+	 * 
+	 */
+	private Map portate;
 
-    public Menu getMenu() {
-        return menu;
-    }
+	/**
+	 * 
+	 */
+	private Menu menu;
 
-    public void setMenu(Menu menu) {
-        this.menu = menu;
-    }
+	/**
+	 * @param nome_Cliente 
+	 * @param menu
+	 */
+	public void Ordine(String nome_Cliente, Menu menu) {
+		// TODO implement here
+	}
 
-    public Map<String, Portata> getPortate() {
-        return portate;
-    }
+	/**
+	 * @return
+	 */
+	public Map getElencoPortate() {
+		// TODO implement here
+		return null;
+	}
 
-    public void setPortate(Map<String, Portata> portate) {
-        this.portate = portate;
-    }
-    
-    public double getPrezzoTotale(){
-        return 0.0; 
-    }
-    
-    public String toString(){
-        return "Ordine";
-    }
-    
-    public 
-    
+	/**
+	 * @param p 
+	 * @return
+	 */
+	public boolean aggiungiPortata(Portata p) {
+		// TODO implement here
+		return false;
+	}
+
+	/**
+	 * @return
+	 */
+	public String getNome_Cliente() {
+		// TODO implement here
+		return "";
+	}
+
+	/**
+	 * @param nome_Cliente 
+	 * @return
+	 */
+	public void setNome_Cliente(String nome_Cliente) {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	public Menu getMenu() {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @param menu 
+	 * @return
+	 */
+	public void setMenu(Menu menu) {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @return
+	 */
+	public Map getPortate() {
+		// TODO implement here
+		return null;
+	}
+
+	/**
+	 * @param portate 
+	 * @return
+	 */
+	public void setPortate(Map portate) {
+		// TODO implement here
+		return null;
+	}
+
 }
