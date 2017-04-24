@@ -3,139 +3,123 @@ package model;
 import java.util.*;
 
 /**
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @param categoria
+ * @param ID
+ * @param nome
+ * @param prezzo
+ */
+/**
  * @author Iskandar Montano
  */
 public class Portata {
 
-	/**
-	 * Default constructor
-	 */
-	public Portata() {
-	}
+    private String categoria;
+    private String ID;
+    private String nome;
+    private double prezzo;
 
-	/**
-	 * 
-	 */
-	private String categoria;
+    public Portata(String categoria, String ID, String nome, double prezzo) {
+        setCategoria(categoria);
+        setID(ID);
+        setNome(nome);
+        setPrezzo(prezzo);
+    }
 
-	/**
-	 * 
-	 */
-	private String ID;
+    public String getCategoria() {
+        // TODO implement here
+        return this.categoria;
+    }
 
-	/**
-	 * 
-	 */
-	private String nome;
+    private boolean setCategoria(String categoria) {
+        if (categoria != null && !categoria.isEmpty()) {
+            this.categoria = categoria;
+            return true;
+        } else {
+            return false;
+        }
 
-	/**
-	 * 
-	 */
-	private double prezzo;
+    }
 
-	/**
-	 * @param categoria 
-	 * @param ID 
-	 * @param nome 
-	 * @param prezzo
-	 */
-	public void Portata(String categoria, String ID, String nome, double prezzo) {
-		// TODO implement here
-	}
+    public String getID() {
+        return this.ID;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getCategoria() {
-		// TODO implement here
-		return "";
-	}
+    public boolean setID(String ID) {
+        if (ID != null && !ID.isEmpty()) {
+            this.ID = ID;
+            return true;
+        } else {
+            return false;
+        }
 
-	/**
-	 * @param categoria 
-	 * @return
-	 */
-	public void setCategoria(String categoria) {
-		// TODO implement here
+    }
 
-	}
+    public String getNome() {
+        // TODO implement here
+        return this.nome;
+    }
+    
+    public boolean setNome(String nome) {
+        if(nome!=null && !nome.isEmpty()){
+            this.nome=nome;
+            return true;
+        }
+        else{
+            return false;
+        }
 
-	/**
-	 * @return
-	 */
-	public String getID() {
-		// TODO implement here
-		return "";
-	}
+    }
 
-	/**
-	 * @param ID 
-	 * @return
-	 */
-	public void setID(String ID) {
-		// TODO implement here
-	
-	}
+    public double getPrezzo() {
+        // TODO implement here
+        return prezzo;
+    }
+    
+    public boolean setPrezzo(double prezzo) {
+        if(prezzo>0.0){
+            this.prezzo=prezzo;
+            return true;
+        }
+        else{
+            return false;
+        }
 
-	/**
-	 * @return
-	 */
-	public String getNome() {
-		// TODO implement here
-		return "";
-	}
+    }
 
-	/**
-	 * @param nome 
-	 * @return
-	 */
-	public void setNome(String nome) {
-		// TODO implement here
-	
-	}
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
 
-	/**
-	 * @return
-	 */
-	public double getPrezzo() {
-		// TODO implement here
-		return 0.0d;
-	}
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Portata other = (Portata) obj;
+        if (!Objects.equals(this.ID, other.ID)) {
+            return false;
+        }
+        return true;
+    }
+    
+    public String toString() {
+        // TODO implement here
+        return "";
+    }
 
-	/**
-	 * @param prezzo 
-	 * @return
-	 */
-	public void setPrezzo(double prezzo) {
-		// TODO implement here
-	
-	}
-
-	/**
-	 * @param obj 
-	 * @return
-	 */
-	public boolean equals(Object obj) {
-		// TODO implement here
-		return false;
-	}
-
-	/**
-	 * @return
-	 */
-	public String toString() {
-		// TODO implement here
-		return "";
-	}
-
-	/**
-	 * 
-	 */
-	public void toFileFormat() {
-		// TODO implement here
-	}
+    /**
+     *
+     */
+    public void toFileFormat() {
+        // TODO implement here
+    }
 
 }
