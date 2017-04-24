@@ -11,12 +11,12 @@ public interface MenuManager {
 	 * @param Map m 
 	 * @return
 	 */
-	public ArrayList<Menu> caricaPortate(void Map m);
+	public ArrayList<Menu> caricaPortate(Map m);
 
 	/**
 	 * @param Menu m 
 	 * @return
 	 */
-	public void salvaPortate(void Menu m);
+	public void salvaPortate(Menu m);
 
 }

@@ -70,7 +70,6 @@ public class Ordine {
 	 */
 	public void setNome_Cliente(String nome_Cliente) {
 		// TODO implement here
-		return null;
 	}
 
 	/**
@@ -87,7 +86,6 @@ public class Ordine {
 	 */
 	public void setMenu(Menu menu) {
 		// TODO implement here
-		return null;
 	}
 
 	/**
@@ -104,7 +102,6 @@ public class Ordine {
 	 */
 	public void setPortate(Map portate) {
 		// TODO implement here
-		return null;
 	}
 
 }

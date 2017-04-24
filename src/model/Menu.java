@@ -15,15 +15,8 @@ public class Menu {
 	 */
 	public Menu() {
 	}
-
-	/**
-	 * 
-	 */
 	private String menu;
 
-	/**
-	 * 
-	 */
 	private Map portate;
 
 	/**
@@ -48,7 +41,6 @@ public class Menu {
 	 */
 	public void setMenu(String menu) {
 		// TODO implement here
-		return null;
 	}
 
 	/**
@@ -65,7 +57,7 @@ public class Menu {
 	 */
 	public Map getPortate(String categoria) {
 		// TODO implement here
-		return null;
+                return null;
 	}
 
 	/**
@@ -74,7 +66,6 @@ public class Menu {
 	 */
 	public void setPortate(Map portate) {
 		// TODO implement here
-		return null;
 	}
 
 	/**

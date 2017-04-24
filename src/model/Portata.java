@@ -60,7 +60,7 @@ public class Portata {
 	 */
 	public void setCategoria(String categoria) {
 		// TODO implement here
-		return null;
+
 	}
 
 	/**
@@ -77,7 +77,7 @@ public class Portata {
 	 */
 	public void setID(String ID) {
 		// TODO implement here
-		return null;
+	
 	}
 
 	/**
@@ -94,7 +94,7 @@ public class Portata {
 	 */
 	public void setNome(String nome) {
 		// TODO implement here
-		return null;
+	
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class Portata {
 	 */
 	public void setPrezzo(double prezzo) {
 		// TODO implement here
-		return null;
+	
 	}
 
 	/**
