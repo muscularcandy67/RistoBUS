@@ -9,7 +9,6 @@ import java.util.*;
  * @author Iskandar Montano
  */
 public class Ordine {
-<<<<<<< HEAD
         
 	private String nome_Cliente;
 	private Map<Categoria,Portata> portate;
@@ -28,27 +27,7 @@ public class Ordine {
     public void aggiungiPortata(Categoria c, Portata p) {
             portate.putIfAbsent(c,p);
     }
-=======
-
-	private String nome_Cliente;
-	private Map portate
-	private Menu menu;
-
-	public Ordine(String nome_Cliente, Menu menu) {
-		// TODO implement here
-	}
-
-	public Map getElencoPortate() {
-		// TODO implement here
-		return null;
-	}
-
-	public boolean aggiungiPortata(Portata p) {
-		// TODO implement here
-		return false;
-	}
->>>>>>> 842472e367f39f9640137721156346c36b90ca52
-
+    
 	public String getNome_Cliente() {
 		// TODO implement here
 		return "";
