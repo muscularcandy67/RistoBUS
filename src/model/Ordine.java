@@ -28,52 +28,33 @@ public class Ordine {
             portate.putIfAbsent(c,p);
     }
 
-	/**
-	 * @return
-	 */
 	public String getNome_Cliente() {
 		// TODO implement here
 		return "";
 	}
 
-	/**
-	 * @param nome_Cliente 
-	 * @return
-	 */
 	public void setNome_Cliente(String nome_Cliente) {
 		// TODO implement here
 	}
 
-	/**
-	 * @return
-	 */
 	public Menu getMenu() {
 		// TODO implement here
 		return null;
 	}
 
-	/**
-	 * @param menu 
-	 * @return
-	 */
+
 	public void setMenu(Menu menu) {
 		// TODO implement here
 	}
 
-	/**
-	 * @return
-	 */
+
 	public Map getPortate() {
 		// TODO implement here
 		return null;
 	}
 
-	/**
-	 * @param portate 
-	 * @return
-	 */
 	public void setPortate(Map portate) {
-		// TODO implement here
+			// TODO implement here
 	}
 
 }
