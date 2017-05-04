@@ -9,52 +9,24 @@ import java.util.*;
  * @author Iskandar Montano
  */
 public class Ordine {
-
-	/**
-	 * Default constructor
-	 */
-	public Ordine() {
-	}
-
-	/**
-	 * 
-	 */
+        
 	private String nome_Cliente;
-
-	/**
-	 * 
-	 */
-	private Map portate;
-
-	/**
-	 * 
-	 */
+	private Map<Categoria,Portata> portate;
 	private Menu menu;
 
-	/**
-	 * @param nome_Cliente 
-	 * @param menu
-	 */
-	public void Ordine(String nome_Cliente, Menu menu) {
-		// TODO implement here
-	}
+    public Ordine(String nome_Cliente, Map<Categoria, Portata> portate, Menu menu) {
+        setNome_Cliente(nome_Cliente);
+        setPortate(portate);
+        setMenu(menu);
+    }
+    
+    public Map<Categoria,Portata> getElencoPortate() {
+		return portate;
+    }
 
-	/**
-	 * @return
-	 */
-	public Map getElencoPortate() {
-		// TODO implement here
-		return null;
-	}
-
-	/**
-	 * @param p 
-	 * @return
-	 */
-	public boolean aggiungiPortata(Portata p) {
-		// TODO implement here
-		return false;
-	}
+    public void aggiungiPortata(Categoria c, Portata p) {
+            portate.putIfAbsent(c,p);
+    }
 
 	/**
 	 * @return
