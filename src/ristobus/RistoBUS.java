@@ -5,6 +5,8 @@
  */
 package ristobus;
 
+import model.MyPortateManager;
+
 /**
  *
  * @author Iskandar Montano
@@ -15,7 +17,8 @@ public class RistoBUS {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        MyPortateManager mpm = new MyPortateManager();
+        System.out.println(mpm.caricaPortate());
     }
     
 }
