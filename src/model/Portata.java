@@ -109,11 +109,13 @@ public class Portata {
         }
         return true;
     }
-    
+
+    @Override
     public String toString() {
-        // TODO implement here
-        return "";
+        return "Portata{" + "categoria=" + categoria + ", ID=" + ID + ", nome=" + nome + ", prezzo=" + prezzo + '}';
     }
+    
+    
 
     /**
      *
