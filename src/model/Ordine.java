@@ -56,7 +56,7 @@ public class Ordine {
     }
 
     public void setPortate(Map<Categoria,Portata> portate) {
-        
+
     }
 
 }
