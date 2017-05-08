@@ -55,7 +55,7 @@ public class Ordine {
         return portate;
     }
 
-    public void setPortate(Map portate) {
+    public void setPortate(Map<Categoria,Portata> portate) {
         
     }
 
