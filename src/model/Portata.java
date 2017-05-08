@@ -13,25 +13,25 @@ import java.util.*;
  */
 public class Portata {
 
-    private String categoria;
+    private Categoria categoria;
     private String ID;
     private String nome;
     private double prezzo;
 
-    public Portata(String categoria, String ID, String nome, double prezzo) {
+    public Portata(Categoria categoria, String ID, String nome, double prezzo) {
         setCategoria(categoria);
         setID(ID);
         setNome(nome);
         setPrezzo(prezzo);
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         // TODO implement here
         return this.categoria;
     }
 
-    private boolean setCategoria(String categoria) {
-        if (categoria != null && !categoria.isEmpty()) {
+    private boolean setCategoria(Categoria categoria) {
+        if (categoria != null) {
             this.categoria = categoria;
             return true;
         } else {
