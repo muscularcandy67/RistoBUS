@@ -10,69 +10,48 @@ import java.util.*;
  */
 public class Menu {
 
-	/**
-	 * Default constructor
-	 */
-	public Menu() {
+	
+	private String menu;        
+	private Map<Categoria,Portata> portate;
+        
+	public Menu(String menu, Map<Categoria,Portata> portate) {
+		
 	}
-	private String menu;
-
-	private Map portate;
-
-	/**
-	 * @param menu 
-	 * @param portate
-	 */
-	public void Menu(String menu, Map portate) {
-		// TODO implement here
+	public String getNome() {
+		return this.menu;
 	}
+        
+	public boolean setNome(String menu) {
+            if(menu!=null && !menu.isEmpty()){
+                this.menu=menu;
+                return true;
+            }
+            else return false;
+        }
 
-	/**
-	 * @return
-	 */
-	public String getMenu() {
-		// TODO implement here
-		return "";
-	}
-
-	/**
-	 * @param menu 
-	 * @return
-	 */
-	public void setMenu(String menu) {
-		// TODO implement here
+        public Map<Categoria,Portata> getMenu() {
+		
+		return portate;
 	}
 
-	/**
-	 * @return
-	 */
-	public Map getPortate() {
-		// TODO implement here
-		return null;
+	public ArrayList<Portata> getPortata(Categoria categoria) {
+         
 	}
 
-	/**
-	 * @param categoria 
-	 * @return
-	 */
-	public Map getPortate(String categoria) {
-		// TODO implement here
-                return null;
+	public boolean setPortate(Map<Categoria,Portata> portate) {
+		if(portate!=null){
+                    this.portate=portate;
+                    return true;
+                }
+                else return false;
 	}
 
-	/**
-	 * @param portate 
-	 * @return
-	 */
-	public void setPortate(Map portate) {
-		// TODO implement here
-	}
-
-	/**
-	 * 
-	 */
 	public void toFileFormat() {
-		// TODO implement here
-	}
+            StringBuilder s= new StringBuilder();
+		s.append("MENU").append(menu).append("\n").append("ANTIPASTO: ").append(portate.get(Categoria.ANTIPASTO));
+	       for(int i =1;i<=portate.keySet().size();i++)
+                   Categoria.values();
+                   
+        }
 
 }
