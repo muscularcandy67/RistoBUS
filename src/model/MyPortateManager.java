@@ -75,7 +75,17 @@ public class MyPortateManager implements PortateManager {
             HashMap<Categoria, ArrayList<Portata>> hm = this.caricaPortate();
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Portate.txt")));
             String portate = "";
-            for (int i=0;i<hm.)
+            for (Categoria cat : Categoria.values()) {
+                for (Portata portata : hm.get(cat)) {
+                    portate += portata.toFileFormat() + "\n";
+                }
+                if (p.getCategoria() == cat) {
+                    portate += p.toFileFormat() + "\n";
+                }
+            }
+            System.out.println(portate);
+            bw.write(portate);
+            bw.close();
         } catch (IOException ex) {
             Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
         }

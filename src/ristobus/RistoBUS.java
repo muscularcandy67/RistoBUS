@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ristobus;
+import model.*;
 
 import model.MyPortateManager;
 
@@ -19,6 +20,8 @@ public class RistoBUS {
     public static void main(String[] args) {
         MyPortateManager mpm = new MyPortateManager();
         System.out.println(mpm.caricaPortate());
+        Portata p = new Portata(Categoria.ANTIPASTO, "test", "test", 50.40);
+        mpm.salvaPortata(p);
     }
     
 }
