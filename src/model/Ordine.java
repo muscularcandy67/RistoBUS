@@ -12,7 +12,7 @@ import java.util.*;
 public class Ordine {
 
     private String nome_Cliente;
-    private Map<Categoria, ArrayList<Portata>> portate;
+    private HashMap<Categoria, ArrayList<Portata>> portate;
     private Menu menu;
 
     public Ordine(String nome_Cliente, Menu menu) {
@@ -24,8 +24,10 @@ public class Ordine {
         return portate;
     }
 
-    public void aggiungiPortata(Categoria c, Portata p) {
-        portate.putIfAbsent(c, p);
+    public void aggiungiPortata(Portata p) {
+        ArrayList<Portata> portatee = portate.get(p.getCategoria());
+        portatee.add(p);
+        portate.put(p.getCategoria(), portatee);
     }
 
     public String getNome_Cliente() {
