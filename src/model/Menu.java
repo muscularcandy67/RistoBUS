@@ -12,11 +12,14 @@ public class Menu {
 
 	
 	private String menu;        
-	private Map<Categoria,ArrayList<Portata>> portate;
+	private HashMap<Categoria,ArrayList<Portata>> portate;
         
-	public Menu(String menu, Map<Categoria,Portata> portate) {
-		
+	public Menu(String menu, HashMap<Categoria,ArrayList<Portata>> portate) {
+            this.setNome(menu);
+            this.setPortate(portate);
 	}
+        
+        
 	public String getNome() {
 		return this.menu;
 	}
@@ -33,12 +36,16 @@ public class Menu {
 		
 		return portate;
 	}
+        
+        public HashMap<Categoria,ArrayList<Portata>> getPortate() {
+            return portate;
+        }
 
-	public ArrayList<Portata> getPortata(Categoria categoria) {
+	public ArrayList<Portata> getPortate(Categoria categoria) {
             return portate.get(categoria);
 	}
 
-	public boolean setPortate(Map<Categoria,ArrayList<Portata>> portate) {
+	public boolean setPortate(HashMap<Categoria,ArrayList<Portata>> portate) {
 		if(portate!=null){
                     this.portate=portate;
                     return true;
@@ -46,11 +53,23 @@ public class Menu {
                 else return false;
 	}
 
-	public void toFileFormat() {
-            StringBuilder s= new StringBuilder();
-		s.append("MENU").append(menu).append("\n").append("ANTIPASTO: ").append(portate.get(Categoria.ANTIPASTO));
-	       for(int i =1;i<=portate.keySet().size();i++)
-                   Categoria.values();
+	public String toFileFormat() {
+            String s= "";
+            s += "MENU" + menu + "\n";
+            
+            for (Categoria c : Categoria.values()) {
+                s += c.toString() + ": ";
+                for(int i=0; i<portate.get(c).size(); i++) {
+                    s += portate.get(c).get(i).getID();
+                    if (i+1 != portate.get(c).size()) {
+                        s += ", ";
+                    }
+                }
+                s += "\n";
+            }
+            
+            s += "END MENU";
+            return s;
                    
         }
 
