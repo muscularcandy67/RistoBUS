@@ -12,7 +12,7 @@ import java.util.*;
 public class Ordine {
 
     private String nome_Cliente;
-    private Map<Categoria, Portata> portate;
+    private Map<Categoria, ArrayList<Portata>> portate;
     private Menu menu;
 
     public Ordine(String nome_Cliente, Menu menu) {
@@ -20,7 +20,7 @@ public class Ordine {
         setMenu(menu);
     }
 
-    public Map<Categoria, Portata> getElencoPortate() {
+    public Map<Categoria, ArrayList<Portata>> getElencoPortate() {
         return portate;
     }
 
@@ -51,7 +51,7 @@ public class Ordine {
         }
     }
 
-    public Map<Categoria,Portata> getPortate() {
+    public Map<Categoria,ArrayList<Portata>> getPortate() {
         return portate;
     }
 
