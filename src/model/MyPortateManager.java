@@ -1,22 +1,27 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
- * 
+ *
  */
 public class MyPortateManager implements PortateManager {
-    
+
 
     /*
-     * Default constructor
+     * Default constructor    public MyPortateManager() {
+
      */
     public MyPortateManager() {
-        
+
     }
 
     @Override
@@ -31,11 +36,10 @@ public class MyPortateManager implements PortateManager {
             BufferedReader br = new BufferedReader(new FileReader(f));
             String line;
             while ((line = br.readLine()) != null) {
-                line = line.trim();
                 StringTokenizer st = new StringTokenizer(line, ",");
                 if (st.countTokens() == 4) {
-                    String id = st.nextToken();
-                    String nome = st.nextToken();
+                    String id = st.nextToken().trim();
+                    String nome = st.nextToken().trim();
                     ArrayList<Portata> al;
                     Categoria key = null;
                     String cat = st.nextToken().trim();
@@ -61,13 +65,20 @@ public class MyPortateManager implements PortateManager {
         } catch(IOException ioex) {
             ioex.printStackTrace();
         }
-        
+
         return hm;
     }
 
     @Override
-    public void salvaPortate() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void salvaPortata(Portata p) {
+        try {
+            HashMap<Categoria, ArrayList<Portata>> hm = this.caricaPortate();
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Portate.txt")));
+            String portate = "";
+            for (int i=0;i<hm.)
+        } catch (IOException ex) {
+            Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }
