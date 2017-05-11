@@ -55,7 +55,7 @@ public class MyPortateManager implements PortateManager {
                     }
                     double prezzo = Double.parseDouble(st.nextToken());
                     al = hm.get(key);
-                    System.out.println(key + id + nome + prezzo);
+                    //System.out.println(key + id + nome + prezzo);
                     al.add(new Portata(key, id, nome, prezzo));
                     hm.put(key, al);
                 } else {
