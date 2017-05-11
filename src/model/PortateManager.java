@@ -3,7 +3,7 @@ package model;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public interface PortateManager {
 
@@ -15,6 +15,6 @@ public interface PortateManager {
 	/**
 	 * @return
 	 */
-	public void salvaPortate();
+	public void salvaPortata(Portata p);
 
 }

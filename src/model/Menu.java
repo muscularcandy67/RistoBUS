@@ -12,7 +12,7 @@ public class Menu {
 
 	
 	private String menu;        
-	private Map<Categoria,Portata> portate;
+	private Map<Categoria,ArrayList<Portata>> portate;
         
 	public Menu(String menu, Map<Categoria,Portata> portate) {
 		
@@ -29,16 +29,16 @@ public class Menu {
             else return false;
         }
 
-        public Map<Categoria,Portata> getMenu() {
+        public Map<Categoria,ArrayList<Portata>> getMenu() {
 		
 		return portate;
 	}
 
 	public ArrayList<Portata> getPortata(Categoria categoria) {
-         
+            return portate.get(categoria);
 	}
 
-	public boolean setPortate(Map<Categoria,Portata> portate) {
+	public boolean setPortate(Map<Categoria,ArrayList<Portata>> portate) {
 		if(portate!=null){
                     this.portate=portate;
                     return true;

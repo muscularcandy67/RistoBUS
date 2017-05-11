@@ -120,8 +120,9 @@ public class Portata {
     /**
      *
      */
-    public void toFileFormat() {
-        // TODO implement here
+    public String toFileFormat() {
+        // D02, Frutta di stagione, DESSERT, 4.00
+        return this.getID() + ", " + this.getNome() + ", " + this.getCategoria().toString() + ", " + this.getPrezzo();
     }
 
 }
