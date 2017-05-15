@@ -1,8 +1,10 @@
 package model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
@@ -79,7 +81,20 @@ public class MyMenuManager implements MenuManager {
 
     @Override
     public void salvaMenu(Menu m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MyPortateManager mpm = new MyPortateManager();
+        ArrayList<Menu> old_menu = this.caricaMenu(mpm.caricaPortate());
+        old_menu.add(m);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Menu.txt")));
+            String buffer = "";
+            for (Menu menu : old_menu) {
+                buffer += menu.toFileFormat() + "\n";
+            }
+            bw.write(buffer);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     
     public static Portata findPortataById(String id, HashMap<Categoria, ArrayList<Portata>> mm) {
