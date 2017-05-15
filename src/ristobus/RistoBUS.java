@@ -22,6 +22,8 @@ public class RistoBUS {
         System.out.println(mpm.caricaPortate());
         Portata p = new Portata(Categoria.ANTIPASTO, "test", "test", 50.40);
         mpm.salvaPortata(p);
+        MyMenuManager mmm = new MyMenuManager();
+        mmm.caricaMenu(mm);
     }
     
 }

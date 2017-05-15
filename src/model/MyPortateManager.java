@@ -25,7 +25,7 @@ public class MyPortateManager implements PortateManager {
     }
 
     @Override
-    public HashMap caricaPortate() {
+    public HashMap<Categoria, ArrayList<Portata>> caricaPortate() {
         HashMap<Categoria, ArrayList<Portata>> hm = new HashMap<>();
         hm.put(Categoria.ANTIPASTO, new ArrayList<>());
         hm.put(Categoria.PRIMO, new ArrayList<>());
@@ -89,6 +89,16 @@ public class MyPortateManager implements PortateManager {
         } catch (IOException ex) {
             Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    public Portata findPortataByID(String id) {
+        HashMap<Categoria, ArrayList<Portata>> hm = this.caricaPortate();
+        for (Categoria c : Categoria.values()) {
+            for (Portata p : hm.get(c)) {
+                if (p.getID().equals(id)) return p;
+            }
+        }
+        return null;
     }
 
 }
