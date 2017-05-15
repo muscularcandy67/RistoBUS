@@ -1,5 +1,7 @@
 A01, Prosciutto e melone, ANTIPASTO, 9.0
 A02, Antipasto di mare, ANTIPASTO, 8.0
+test, test, ANTIPASTO, 50.4
+test, test, ANTIPASTO, 50.4
 P01, Trenette al pesto, PRIMO, 6.5
 P02, Linguine all'astice, PRIMO, 9.5
 P03, Lasagne vegetariane, PRIMO, 5.5

@@ -11,48 +11,70 @@ import java.util.*;
  */
 public class MyMenuManager implements MenuManager {
 
-	/**
-	 * Default constructor
-	 */
-	public MyMenuManager() {
+	
+    /** Formato menu
+     * 
+     *  MENU base
+     *  ANTIPASTO: A01, A02
+     *  PRIMO: P02, P04
+     *  SECONDO: S03, S05
+     *  DESSERT: D01
+     *  END MENU
+     * 
+    **/
+    
+    
+    public MyMenuManager() {
             
-	}
+    }
 
     @Override
-    public ArrayList<Menu> caricaMenu(HashMap<Categoria, ArrayList<Portata>> mm) {
+    public ArrayList<Menu> caricaMenu(HashMap<Categoria, ArrayList<Portata>> mm) { // mm viene da MyPortateManager e contiene il database di portate disponibili
         File f = new File("Menu.txt");
         ArrayList<Menu> menus = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
             String line;
-            String nomemenu = null;
             Menu m = null;
             while ((line = br.readLine()) != null) {
                 Categoria c = null;
                 if (line.startsWith("MENU")) {
-                    HashMap<Categoria, ArrayList<Portata>> hm = new HashMap<>();
-                    m = new Menu(line.substring(5), hm);
-                } else if (line.startsWith("ANTIPASTO")) {
-                    c = Categoria.ANTIPASTO;
-                } else if (line.startsWith("PRIMO")) {
-                    c = Categoria.PRIMO;
-                } else if (line.startsWith("SECONDO")) {
-                    c = Categoria.SECONDO;
-                } else if (line.startsWith("DESSERT")) {
-                    c = Categoria.DESSERT;
+                    m = new Menu(line.substring(5));
                 } else if (line.startsWith("END MENU")) {
                     menus.add(m);
+                } else {
+                    c = Categoria.valueOf(line.substring(0,line.indexOf(":")));
+                    //System.out.println(c);
+                    String str = line.substring(line.indexOf(": ")+1);
+                    StringTokenizer st = new StringTokenizer(str, ",");
+                    ArrayList<String> portatestr = new ArrayList<>();
+                    while (st.hasMoreTokens()) {
+                        String token = st.nextToken().trim();
+                        //System.out.println(token);
+                        portatestr.add(token);
+                        //System.out.println(portatestr);
+                    }
+                    
+                    ArrayList<Portata> portate = new ArrayList<>();
+                    for (String strport : portatestr) {
+                        //System.out.println(strport);
+                        Portata p = findPortataById(strport, mm);
+                        if (p != null) {
+                            portate.add(p);
+                        } else {
+                            //System.out.println(p + " is null!");
+                        }
+                    }
+                
+                    m.setPortate(c, portate);
                 }
-                ArrayList<Portata> p = m.getPortate(c);
-                MyPortateManager mpm = new MyPortateManager();
-                p.add(mpm.findPortataByID(line.substring(line.indexOf(": ")+1)));
-                //m.setPortate(mm)
                 
             }
         } catch(IOException ioex) {
             ioex.printStackTrace();
         }
-        System.out.println(menus);
+        //System.out.println(menus);
+        return menus;
     }
 
     @Override
@@ -60,19 +82,18 @@ public class MyMenuManager implements MenuManager {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public boolean putInHashMap(HashMap<Categoria, ArrayList<Portata>> hm, Categoria c, String str) {
-        StringTokenizer st = new StringTokenizer(str);
-        ArrayList<Portata> alp = hm.get(c);
-        MyPortateManager mpm = new MyPortateManager();
-        for (int i=0;i<st.countTokens();i++) {
-            String strnt = st.nextToken();
-            Portata p = mpm.findPortataByID(strnt);
-            if (p != null) {
-                alp.add(p);
+    public static Portata findPortataById(String id, HashMap<Categoria, ArrayList<Portata>> mm) {
+        for (Categoria c : Categoria.values()) {
+            //System.out.println(c);
+            for (Portata p : mm.get(c)) {
+                //System.out.println(p.getID() + " =? " + id);
+                if (p.getID().equals(id)) {
+                    System.out.println(p);
+                    return p;
+                } 
             }
         }
-        hm.put(c, alp);
-        return true;
+        return null;
     }
         
         

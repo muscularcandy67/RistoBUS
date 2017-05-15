@@ -91,7 +91,7 @@ public class MyPortateManager implements PortateManager {
         }
     }
     
-    public Portata findPortataByID(String id) {
+    /* public Portata findPortataByID(String id) {
         HashMap<Categoria, ArrayList<Portata>> hm = this.caricaPortate();
         for (Categoria c : Categoria.values()) {
             for (Portata p : hm.get(c)) {
@@ -99,6 +99,6 @@ public class MyPortateManager implements PortateManager {
             }
         }
         return null;
-    }
+    } */
 
 }
