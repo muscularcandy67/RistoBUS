@@ -26,9 +26,9 @@ public class MyMenuManager implements MenuManager {
     **/
     
     
-    public MyMenuManager() {
+
             
-    }
+
 
     @Override
     public ArrayList<Menu> caricaMenu(HashMap<Categoria, ArrayList<Portata>> mm) { // mm viene da MyPortateManager e contiene il database di portate disponibili
@@ -97,7 +97,7 @@ public class MyMenuManager implements MenuManager {
         }
     }
     
-    public static Portata findPortataById(String id, HashMap<Categoria, ArrayList<Portata>> mm) {
+    private static Portata findPortataById(String id, HashMap<Categoria, ArrayList<Portata>> mm) {
         for (Categoria c : Categoria.values()) {
             //System.out.println(c);
             for (Portata p : mm.get(c)) {
