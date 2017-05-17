@@ -32,18 +32,7 @@ public class MyPortateManager implements PortateManager {
                     String id = st.nextToken().trim();
                     String nome = st.nextToken().trim();
                     ArrayList<Portata> al;
-                    Categoria key = null;
-                    String cat = st.nextToken().trim();
-                    switch (cat) {
-                        case "ANTIPASTO":key = Categoria.ANTIPASTO;
-                                          break;
-                        case "PRIMO": key = Categoria.PRIMO;
-                                      break;
-                        case "SECONDO": key = Categoria.SECONDO;
-                                      break;
-                        case "DESSERT": key = Categoria.DESSERT;
-                                      break;
-                    }
+                    Categoria key = Categoria.valueOf(st.nextToken().trim());
                     double prezzo = Double.parseDouble(st.nextToken());
                     al = hm.get(key);
                     //System.out.println(key + id + nome + prezzo);
@@ -74,7 +63,7 @@ public class MyPortateManager implements PortateManager {
                     portate += p.toFileFormat() + "\n";
                 }
             }
-            System.out.println(portate);
+            //System.out.println(portate);
             bw.write(portate);
             bw.close();
         } catch (IOException ex) {

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package ristobus;
+import controller.MyController;
 import model.*;
 
 import model.MyPortateManager;
@@ -13,17 +14,14 @@ import model.MyPortateManager;
  * @author Iskandar Montano
  */
 public class RistoBUS {
+    
+    //MyController mc;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        MyPortateManager mpm = new MyPortateManager();
-        //System.out.println(mpm.caricaPortate());
-        //Portata p = new Portata(Categoria.ANTIPASTO, "test", "test", 50.40);
-        //mpm.salvaPortata(p);
-        MyMenuManager mmm = new MyMenuManager();
-        System.out.println(mmm.caricaMenu(mpm.caricaPortate()));
+        //mc = new MyController(new MyPortateManager(), new MyMenuManager(), new SwingUserInteractor()); //pm, mm, ui
     }
     
 }

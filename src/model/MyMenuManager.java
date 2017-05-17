@@ -42,25 +42,19 @@ public class MyMenuManager implements MenuManager {
                     menus.add(m);
                 } else {
                     c = Categoria.valueOf(line.substring(0,line.indexOf(":")));
-                    //System.out.println(c);
                     String str = line.substring(line.indexOf(": ")+1);
                     StringTokenizer st = new StringTokenizer(str, ",");
                     ArrayList<String> portatestr = new ArrayList<>();
                     while (st.hasMoreTokens()) {
                         String token = st.nextToken().trim();
-                        //System.out.println(token);
                         portatestr.add(token);
-                        //System.out.println(portatestr);
                     }
                     
                     ArrayList<Portata> portate = new ArrayList<>();
                     for (String strport : portatestr) {
-                        //System.out.println(strport);
                         Portata p = findPortataById(strport, mm);
                         if (p != null) {
                             portate.add(p);
-                        } else {
-                            //System.out.println(p + " is null!");
                         }
                     }
                 
@@ -71,7 +65,6 @@ public class MyMenuManager implements MenuManager {
         } catch(IOException ioex) {
             ioex.printStackTrace();
         }
-        //System.out.println(menus);
         return menus;
     }
 
@@ -95,9 +88,7 @@ public class MyMenuManager implements MenuManager {
     
     private static Portata findPortataById(String id, HashMap<Categoria, ArrayList<Portata>> mm) {
         for (Categoria c : Categoria.values()) {
-            //System.out.println(c);
             for (Portata p : mm.get(c)) {
-                //System.out.println(p.getID() + " =? " + id);
                 if (p.getID().equals(id)) {
                     System.out.println(p);
                     return p;

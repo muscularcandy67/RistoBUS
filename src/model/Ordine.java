@@ -12,7 +12,7 @@ import java.util.*;
 public class Ordine {
 
     private String nomeCliente;
-    private HashMap<Categoria, ArrayList<Portata>> portate;
+    private HashMap<Categoria, Portata> portate;
     private Menu menu;
 
     public Ordine(String nomeCliente, Menu menu) {
@@ -20,14 +20,12 @@ public class Ordine {
         setMenu(menu);
     }
 
-    public Map<Categoria, ArrayList<Portata>> getElencoPortate() {
+    public Map<Categoria, Portata> getElencoPortate() {
         return portate;
     }
 
     public void aggiungiPortata(Portata p) {
-        ArrayList<Portata> portatee = portate.get(p.getCategoria());
-        portatee.add(p);
-        portate.put(p.getCategoria(), portatee);
+        portate.putIfAbsent(p.getCategoria(), p);
     }
 
     public String getNomeCliente() {
@@ -53,18 +51,18 @@ public class Ordine {
         }
     }
 
-    public Map<Categoria,ArrayList<Portata>> getPortate() {
+    /* public Map<Categoria,Portata> getPortate() {
         return portate;
-    }
+    } */
 
-    public void setPortate(HashMap<Categoria,ArrayList<Portata>> portate) {
+    public void setPortate(HashMap<Categoria,Portata> portate) {
         this.portate = portate;
     }
     
     public boolean isValid() {
         int x = 0;
         for (Categoria c : Categoria.values()) {
-            if (portate.get(c).size()>0) x++;
+            if (portate.get(c) != null) x++;
         }
         return x==4;
     }
@@ -72,9 +70,7 @@ public class Ordine {
     public double getPrezzoTotale() {
         double prezzotot = 0;
         for (Categoria c : Categoria.values()) {
-            for (Portata p : portate.get(c)) {
-                prezzotot += p.getPrezzo();
-            }
+            prezzotot += portate.get(c).getPrezzo();
         }
         return prezzotot;
     }
@@ -87,11 +83,17 @@ public class Ordine {
     public String toFullString() {
         String ret = this.toString() + "\n";
         for (Categoria c : Categoria.values()) {
-            for (Portata p : portate.get(c)) {
-                ret += p.toString() + "\n";
-            }
+            ret += portate.get(c).toString() + "\n";
         }
         return ret;
+    }
+
+    public void sostituisciPortata(Portata daMettere) throws Exception {
+        if (daMettere == null) {
+            throw new NullPointerException();
+        } else {
+            portate.replace(daMettere.getCategoria(), daMettere);
+        }
     }
 
 }

@@ -1,52 +1,67 @@
 package controller;
 
 import java.util.*;
-import model.Menu;
-import model.MenuManager;
-import model.MyPortateManager;
-import model.Ordine;
-import model.Portata;
-import model.UserInteractor;
+import model.*;
 
 /**
  * 
  */
 public class MyController implements Controller {
 
-	/**
-	 * Default constructor
-	 */
-    public MyController() {
+    private PortateManager pm;
+    private MenuManager mm;
+    private UserInteractor ui;
     
-    }
+    private ArrayList<Menu> menus;
+    private HashMap<Categoria, ArrayList<Portata>> portate;
 
-    public void MyController(MyPortateManager p, MenuManager m, UserInteractor u) {
-    	// TODO implement here
+    public MyController(MyPortateManager p, MenuManager m, UserInteractor u) {
+    	this.pm = p;
+        this.mm = m;
+        this.ui = u;
+        menus = this.getMenus();
+        portate = pm.caricaPortate();
     }
 
     public ArrayList<Menu> getMenus() {
-	// TODO implement here
-	return null;
+	return mm.caricaMenu(pm.caricaPortate());
     }
 
     @Override
     public String sostituisciPortata(Ordine ordine, Portata daMettere) {
-        return "";
+        try {
+            ordine.sostituisciPortata(daMettere);
+            return null;
+        } catch(Exception e) {
+            return e.toString();
+        }
     }
 
     @Override
     public Ordine creaOrdine(Menu m, String nomeCliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new Ordine(nomeCliente, m);
     }
 
     @Override
     public boolean aggiungiPortata(Portata p) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (p != null) {
+            pm.salvaPortata(p);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean aggiungiMenu(Menu m) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (m != null) {
+            mm.salvaMenu(m);
+            return true;
+        }
+        return false;
+    }
+
+    public HashMap<Categoria, ArrayList<Portata>> getPortate() {
+        return portate;
     }
         
         
