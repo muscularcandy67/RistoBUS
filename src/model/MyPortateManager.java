@@ -15,15 +15,6 @@ import java.util.logging.Logger;
  */
 public class MyPortateManager implements PortateManager {
 
-
-    /*
-     * Default constructor    public MyPortateManager() {
-
-     */
-    public MyPortateManager() {
-
-    }
-
     @Override
     public HashMap<Categoria, ArrayList<Portata>> caricaPortate() {
         HashMap<Categoria, ArrayList<Portata>> hm = new HashMap<>();

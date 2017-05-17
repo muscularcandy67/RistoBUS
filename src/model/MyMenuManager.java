@@ -26,10 +26,6 @@ public class MyMenuManager implements MenuManager {
     **/
     
     
-
-            
-
-
     @Override
     public ArrayList<Menu> caricaMenu(HashMap<Categoria, ArrayList<Portata>> mm) { // mm viene da MyPortateManager e contiene il database di portate disponibili
         File f = new File("Menu.txt");
