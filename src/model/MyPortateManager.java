@@ -67,7 +67,9 @@ public class MyPortateManager implements PortateManager {
             bw.write(portate);
             bw.close();
         } catch (IOException ex) {
-            Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
+            SwingUserInteractor sui = new SwingUserInteractor();
+            sui.showMessage(ex.toString());
         }
     }
     

@@ -18,21 +18,22 @@ public class RistoGUI extends javax.swing.JFrame {
      * Creates new form RistoGUI
      */
     
-    private view.Ordine ordinetab;
+    private view.OrdinePane ordinetab;
+    private NuovaPortataPanel nppanel;
     
     MyController mc;
     
     public RistoGUI() {
         mc = new MyController(new MyPortateManager(), new MyMenuManager(), new SwingUserInteractor()); //pm, mm, ui
-        //mc
         initComponents();
         initPanes();
     }
     
     private void initPanes() {
         this.setTitle("RistoBUS");
-        System.out.println(mc.toString());
-        ordinetab = new view.Ordine(mc);
+        //System.out.println(mc.toString());
+        ordinetab = new view.OrdinePane(mc);
+        nppanel = new NuovaPortataPanel(mc);
         setContentPane(ordinetab);
     }
 
@@ -46,21 +47,32 @@ public class RistoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        ordineMenu = new javax.swing.JMenu();
+        newPortataMenu = new javax.swing.JMenu();
+        newMenuMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
+        setResizable(false);
 
-        jMenu1.setText("Ordine");
-        jMenuBar1.add(jMenu1);
+        ordineMenu.setText("Ordine");
+        jMenuBar1.add(ordineMenu);
 
-        jMenu2.setText("Nuova Portata");
-        jMenuBar1.add(jMenu2);
+        newPortataMenu.setText("Nuova Portata");
+        newPortataMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newPortataMenuMouseClicked(evt);
+            }
+        });
+        newPortataMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newPortataMenuActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(newPortataMenu);
 
-        jMenu3.setText("Nuovo Menu");
-        jMenuBar1.add(jMenu3);
+        newMenuMenu.setText("Nuovo Menu");
+        jMenuBar1.add(newMenuMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -68,15 +80,23 @@ public class RistoGUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 438, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 233, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void newPortataMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newPortataMenuMouseClicked
+        setContentPane(nppanel);
+    }//GEN-LAST:event_newPortataMenuMouseClicked
+
+    private void newPortataMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPortataMenuActionPerformed
+        setContentPane(nppanel);
+    }//GEN-LAST:event_newPortataMenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -103,9 +123,9 @@ public class RistoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu newMenuMenu;
+    private javax.swing.JMenu newPortataMenu;
+    private javax.swing.JMenu ordineMenu;
     // End of variables declaration//GEN-END:variables
 }

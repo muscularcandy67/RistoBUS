@@ -14,6 +14,7 @@ public class MyController implements Controller {
     
     private ArrayList<Menu> menus;
     private HashMap<Categoria, ArrayList<Portata>> portate;
+    private ArrayList<Ordine> ordini;
 
     public MyController(MyPortateManager p, MenuManager m, UserInteractor u) {
     	this.pm = p;
@@ -21,6 +22,7 @@ public class MyController implements Controller {
         this.ui = u;
         menus = this.getMenus();
         portate = pm.caricaPortate();
+        ordini = new ArrayList<>();
     }
 
     public ArrayList<Menu> getMenus() {
@@ -41,6 +43,20 @@ public class MyController implements Controller {
     public Ordine creaOrdine(Menu m, String nomeCliente) {
         return new Ordine(nomeCliente, m);
     }
+    
+    public void aggiungiOrdine(Menu m, String nomeCliente, HashMap<Categoria, Portata> hmcp) {
+        Ordine o = creaOrdine(m, nomeCliente);
+        for (Categoria c : Categoria.values()) {
+            try {
+                o.aggiungiPortata(hmcp.get(c));
+            } catch(Exception e) {
+                ui.showMessage("PROBLEMA! \n");
+                e.printStackTrace();
+            }
+        }
+        ordini.add(o);
+        ui.showMessage(ordini.toString());
+    } 
 
     @Override
     public boolean aggiungiPortata(Portata p) {

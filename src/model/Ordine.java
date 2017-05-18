@@ -18,14 +18,19 @@ public class Ordine {
     public Ordine(String nomeCliente, Menu menu) {
         setNomeCliente(nomeCliente);
         setMenu(menu);
+        portate = new HashMap<Categoria, Portata>();
     }
 
     public Map<Categoria, Portata> getElencoPortate() {
         return portate;
     }
 
-    public void aggiungiPortata(Portata p) {
-        portate.putIfAbsent(p.getCategoria(), p);
+    public void aggiungiPortata(Portata p) throws Exception {
+        if (!portate.containsKey(p.getCategoria())) {
+            portate.put(p.getCategoria(), p);
+        } else {
+            throw new Exception();
+        }
     }
 
     public String getNomeCliente() {
@@ -64,7 +69,7 @@ public class Ordine {
         for (Categoria c : Categoria.values()) {
             if (portate.get(c) != null) x++;
         }
-        return x==4;
+        return x==Categoria.values().length;
     }
 
     public double getPrezzoTotale() {
