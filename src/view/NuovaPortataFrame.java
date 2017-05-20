@@ -7,7 +7,6 @@ package view;
 
 import com.alee.laf.WebLookAndFeel;
 import controller.*;
-import javax.swing.DefaultComboBoxModel;
 import model.Categoria;
 import model.Portata;
 
@@ -25,7 +24,15 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
      */
     public NuovaPortataFrame(Controller mc) {
         initComponents();
+        initComboBox();
         this.mc = mc;
+    }
+    
+    private void initComboBox() {
+        categoriaComboBox.removeAllItems();
+        for (Categoria c : Categoria.values()) {
+            categoriaComboBox.addItem(c.toString());
+        }
     }
 
     /**
@@ -39,7 +46,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
 
         jLabel5 = new javax.swing.JLabel();
         nomeTextField = new javax.swing.JTextField();
-        javax.swing.JComboBox<Categoria> categoriaComboBox = new javax.swing.JComboBox<>();
         prezzoTextField = new javax.swing.JTextField();
         idTextField = new javax.swing.JTextField();
         creaPortataButton = new javax.swing.JButton();
@@ -47,6 +53,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        categoriaComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,9 +64,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
                 nomeTextFieldActionPerformed(evt);
             }
         });
-
-        categoriaComboBox.setModel(new DefaultComboBoxModel<>(Categoria.values()));
-        categoriaComboBox.setSelectedIndex(0);
 
         idTextField.setToolTipText("");
 
@@ -77,6 +81,8 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
         jLabel3.setText("ID");
 
         jLabel4.setText("Categoria");
+
+        categoriaComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,11 +103,11 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nomeTextField)
-                            .addComponent(categoriaComboBox, 0, 315, Short.MAX_VALUE)
                             .addComponent(prezzoTextField)
-                            .addComponent(idTextField)))
+                            .addComponent(idTextField)
+                            .addComponent(categoriaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 287, Short.MAX_VALUE)
                         .addComponent(creaPortataButton)))
                 .addContainerGap())
         );
@@ -139,7 +145,8 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
     private void creaPortataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaPortataButtonActionPerformed
-        if (areValuesValid()) {
+        String validitycheck = areValuesValid();
+        if (validitycheck.isEmpty()) {
             System.out.println(categoriaComboBox.getSelectedIndex());
             int sel = categoriaComboBox.getSelectedIndex();
             if (sel < 0 || sel >= Categoria.values().length) {
@@ -149,20 +156,39 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
             String nome = nomeTextField.getText();
             String id = idTextField.getText();
             double prezzo = Double.parseDouble(prezzoTextField.getText());
-            mc.aggiungiPortata(new Portata(cat, id, nome, prezzo));
+            Portata p = new Portata(cat, id, nome, prezzo);
+            System.out.println("NuovaPortataFrame/LOG :" + p);
+            mc.aggiungiPortata(p);
+            setVisible(false); //you can't see me!
+            dispose();
         } else {
-            ((MyController) mc).getUserInteractor().showMessage("Errore! I campi sono stati compilati in modo scorretto.");
+            ((MyController) mc).getUserInteractor().showMessage("Errore! I campi sono stati compilati in modo scorretto:\n" + validitycheck);
         }
     }//GEN-LAST:event_creaPortataButtonActionPerformed
 
-    private boolean areValuesValid() {
-        boolean numvalid = true;
-        try {
-            Double.parseDouble(prezzoTextField.getText());
-        } catch(Exception e) {
-            numvalid = false;
+    private String areValuesValid() {
+        String msg = "";
+        double prezzo = 0;
+        
+        if (nomeTextField.getText().isEmpty()) {
+            msg += "Manca il nome della portata";
         }
-        return !nomeTextField.getText().isEmpty() && !idTextField.getText().isEmpty() && numvalid;
+        
+        if (idTextField.getText().isEmpty()) {
+            msg += "\nManca l'ID della portata";
+        }
+        
+        try {
+            prezzo = Double.parseDouble(prezzoTextField.getText());
+        } catch(NumberFormatException e) {
+            msg += "\nInserisci un prezzo valido!";
+        }
+        
+        if (prezzo < 0) {
+            msg += "\nIl prezzo non è maggiore di 0!";
+        }
+        
+        return msg;
     }
     
     /**
@@ -190,6 +216,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> categoriaComboBox;
     private javax.swing.JButton creaPortataButton;
     private javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel1;
@@ -200,5 +227,4 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
     private javax.swing.JTextField nomeTextField;
     private javax.swing.JTextField prezzoTextField;
     // End of variables declaration//GEN-END:variables
-    private javax.swing.JComboBox<Categoria> categoriaComboBox;
 }
