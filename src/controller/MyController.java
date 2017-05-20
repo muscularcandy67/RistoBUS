@@ -38,6 +38,10 @@ public class MyController implements Controller {
             return e.toString();
         }
     }
+    
+    public UserInteractor getUserInteractor() {
+        return ui;
+    }
 
     @Override
     public Ordine creaOrdine(Menu m, String nomeCliente) {

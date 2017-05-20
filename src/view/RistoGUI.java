@@ -19,7 +19,6 @@ public class RistoGUI extends javax.swing.JFrame {
      */
     
     private view.OrdinePane ordinetab;
-    private NuovaPortataPanel nppanel;
     
     MyController mc;
     
@@ -33,7 +32,6 @@ public class RistoGUI extends javax.swing.JFrame {
         this.setTitle("RistoBUS");
         //System.out.println(mc.toString());
         ordinetab = new view.OrdinePane(mc);
-        nppanel = new NuovaPortataPanel(mc);
         setContentPane(ordinetab);
     }
 
@@ -91,11 +89,12 @@ public class RistoGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newPortataMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newPortataMenuMouseClicked
-        setContentPane(nppanel);
+        //setContentPane(nppanel);
+        NuovaPortataFrame.main(mc);
     }//GEN-LAST:event_newPortataMenuMouseClicked
 
     private void newPortataMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPortataMenuActionPerformed
-        setContentPane(nppanel);
+        
     }//GEN-LAST:event_newPortataMenuActionPerformed
 
     /**
