@@ -59,13 +59,14 @@ public class MyController implements Controller {
             }
         }
         ordini.add(o);
-        ui.showMessage(ordini.toString());
+        //ui.showMessage(ordini.toString());
     } 
 
     @Override
     public boolean aggiungiPortata(Portata p) {
         if (p != null) {
             pm.salvaPortata(p);
+            portate = pm.caricaPortate();
             return true;
         }
         return false;
@@ -75,6 +76,7 @@ public class MyController implements Controller {
     public boolean aggiungiMenu(Menu m) {
         if (m != null) {
             mm.salvaMenu(m);
+            menus = this.getMenus();
             return true;
         }
         return false;

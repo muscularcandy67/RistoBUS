@@ -17,15 +17,19 @@ import model.Portata;
 public class NuovaPortataFrame extends javax.swing.JFrame {
     
     Controller mc;
+    RistoGUI rgui;
 
     /**
      * Creates new form NuovaPortataFrame
      * @param mc that thing
      */
-    public NuovaPortataFrame(Controller mc) {
+    public NuovaPortataFrame(Controller mc, RistoGUI rgui) {
+        this.mc = mc;
+        this.rgui = rgui;
         initComponents();
         initComboBox();
-        this.mc = mc;
+        rgui.updateOrdineUI();
+        rgui.updateOrdineUI();
     }
     
     private void initComboBox() {
@@ -160,10 +164,11 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
             Portata p = new Portata(cat, id, nome, prezzo);
             System.out.println("NuovaPortataFrame/LOG :" + p);
             mc.aggiungiPortata(p);
+            rgui.updateOrdineUI();
             setVisible(false); //you can't see me!
             dispose();
         } else {
-            ((MyController) mc).getUserInteractor().showMessage("Errore! I campi sono stati compilati in modo scorretto:\n" + validitycheck);
+            ((MyController) mc).getUserInteractor().showMessage("Errore! I campi sono stati compilati in modo scorretto:" + validitycheck);
         }
     }//GEN-LAST:event_creaPortataButtonActionPerformed
 
@@ -172,7 +177,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
         double prezzo = 0;
         
         if (nomeTextField.getText().isEmpty()) {
-            msg += "Manca il nome della portata";
+            msg += "\nManca il nome della portata";
         }
         
         if (idTextField.getText().isEmpty()) {
@@ -195,7 +200,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(Controller m) {
+    public static void main(Controller m, RistoGUI rgui) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -211,7 +216,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuovaPortataFrame(m).setVisible(true);
+                new NuovaPortataFrame(m, rgui).setVisible(true);
             }
         });
     }

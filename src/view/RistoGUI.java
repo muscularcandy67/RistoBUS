@@ -34,6 +34,15 @@ public class RistoGUI extends javax.swing.JFrame {
         ordinetab = new view.OrdinePane(mc);
         setContentPane(ordinetab);
     }
+    
+    public void updateOrdineUI() {
+        try {
+            ordinetab.initStuff();
+        } catch (Exception e) {
+            
+        }
+        System.out.println("WEWEWEWE");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,42 +54,37 @@ public class RistoGUI extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        portataMenuItem = new javax.swing.JMenuItem();
+        menuMenuItem = new javax.swing.JMenuItem();
         ordineMenu = new javax.swing.JMenu();
-        newPortataMenu = new javax.swing.JMenu();
-        newMenuMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
         setResizable(false);
 
+        jMenu1.setText("Nuovo");
+
+        portataMenuItem.setText("Nuova Portata");
+        portataMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                portataMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(portataMenuItem);
+
+        menuMenuItem.setText("Nuovo Menu");
+        menuMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuMenuItem);
+
+        jMenuBar1.add(jMenu1);
+
         ordineMenu.setText("Ordine");
         jMenuBar1.add(ordineMenu);
-
-        newPortataMenu.setText("Nuova Portata");
-        newPortataMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newPortataMenuMouseClicked(evt);
-            }
-        });
-        newPortataMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newPortataMenuActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(newPortataMenu);
-
-        newMenuMenu.setText("Nuovo Menu");
-        newMenuMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                newMenuMenuMouseClicked(evt);
-            }
-        });
-        newMenuMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newMenuMenuActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(newMenuMenu);
 
         setJMenuBar(jMenuBar1);
 
@@ -98,22 +102,13 @@ public class RistoGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newPortataMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newPortataMenuMouseClicked
-        //setContentPane(nppanel);
-        NuovaPortataFrame.main(mc);
-    }//GEN-LAST:event_newPortataMenuMouseClicked
+    private void portataMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portataMenuItemActionPerformed
+        NuovaPortataFrame.main(mc, this);
+    }//GEN-LAST:event_portataMenuItemActionPerformed
 
-    private void newPortataMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPortataMenuActionPerformed
-        
-    }//GEN-LAST:event_newPortataMenuActionPerformed
-
-    private void newMenuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newMenuMenuActionPerformed
-
-    private void newMenuMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuMenuMouseClicked
-        NuovoMenuFrame.main(mc);
-    }//GEN-LAST:event_newMenuMenuMouseClicked
+    private void menuMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMenuItemActionPerformed
+        NuovoMenuFrame.main(mc, this);
+    }//GEN-LAST:event_menuMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,9 +135,10 @@ public class RistoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu newMenuMenu;
-    private javax.swing.JMenu newPortataMenu;
+    private javax.swing.JMenuItem menuMenuItem;
     private javax.swing.JMenu ordineMenu;
+    private javax.swing.JMenuItem portataMenuItem;
     // End of variables declaration//GEN-END:variables
 }

@@ -80,7 +80,7 @@ public class Menu {
 
 	public String toFileFormat() {
             String s= "";
-            s += "MENU" + menu + "\n";
+            s += "MENU " + menu + "\n";
             
             for (Categoria c : Categoria.values()) {
                 s += c.toString() + ": ";

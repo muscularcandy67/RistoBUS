@@ -25,11 +25,15 @@ public class NuovoMenuFrame extends javax.swing.JFrame {
      */
     
     Controller mc;
+    RistoGUI rgui;
     
-    public NuovoMenuFrame(Controller mc) {
+    public NuovoMenuFrame(Controller mc, RistoGUI rgui) {
         this.mc = mc;
+        this.rgui = rgui;
         initComponents();
         initLists();
+        rgui.updateOrdineUI();
+        rgui.updateOrdineUI();
     }
     
     private void initLists() {
@@ -198,19 +202,43 @@ public class NuovoMenuFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_nomeTextFieldActionPerformed
 
     private void creaMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creaMenuButtonActionPerformed
-        HashMap<Categoria, ArrayList<Portata>> hm = ((MyController) mc).getPortate();
-        HashMap<Categoria, ArrayList<Portata>> hmmenu = new HashMap<>();
-        ArrayList<Portata>
-        ArrayList<Portata>
-        ArrayList<Portata>
-        ArrayList<Portata>
-        
+        if (!nomeTextField.getText().isEmpty()) {
+            HashMap<Categoria, ArrayList<Portata>> hm = ((MyController) mc).getPortate();
+            HashMap<Categoria, ArrayList<Portata>> hmmenu = new HashMap<>();
+            ArrayList<Portata> antipasti = new ArrayList<>();
+            ArrayList<Portata> primi = new ArrayList<>();
+            ArrayList<Portata> secondi = new ArrayList<>();
+            ArrayList<Portata> dessert = new ArrayList<>();
+            for (int i : antipastoList.getSelectedIndices()) {
+                antipasti.add(hm.get(Categoria.ANTIPASTO).get(i));
+            }
+            for (int i : primoList.getSelectedIndices()) {
+                primi.add(hm.get(Categoria.PRIMO).get(i));
+            }
+            for (int i : secondoList.getSelectedIndices()) {
+                secondi.add(hm.get(Categoria.SECONDO).get(i));
+            }
+            for (int i : dessertList.getSelectedIndices()) {
+                dessert.add(hm.get(Categoria.DESSERT).get(i));
+            }
+            hmmenu.put(Categoria.ANTIPASTO, antipasti);
+            hmmenu.put(Categoria.PRIMO, primi);
+            hmmenu.put(Categoria.SECONDO, secondi);
+            hmmenu.put(Categoria.DESSERT, dessert);
+            Menu m = new Menu(nomeTextField.getText(), hmmenu);
+            mc.aggiungiMenu(m);
+            rgui.updateOrdineUI();
+            setVisible(false); //you can't see me!
+            dispose();
+        } else {
+            ((MyController) mc).getUserInteractor().showMessage("Manca il nome del menu!");
+        }
     }//GEN-LAST:event_creaMenuButtonActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(Controller mc) {
+    public static void main(Controller mc, RistoGUI rgui) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -226,7 +254,7 @@ public class NuovoMenuFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuovoMenuFrame(mc).setVisible(true);
+                new NuovoMenuFrame(mc, rgui).setVisible(true);
             }
         });
     }

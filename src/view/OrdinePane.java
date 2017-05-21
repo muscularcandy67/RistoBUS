@@ -8,9 +8,6 @@ package view;
 import controller.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.stream.Collectors;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import model.*;
 
 /**
@@ -29,7 +26,7 @@ public class OrdinePane extends javax.swing.JPanel {
         initStuff();
     }
     
-    private void initStuff() {
+    public void initStuff() {
         menuComboBox.removeAllItems();
         for (Menu m : mc.getMenus()) {
             //System.out.println(m);
@@ -51,19 +48,18 @@ public class OrdinePane extends javax.swing.JPanel {
         primoComboBox.setSelectedIndex(0);
         secondoComboBox.setSelectedIndex(0);
         dessertComboBox.setSelectedIndex(0); */
-        for (Portata p : m.getPortate(Categoria.ANTIPASTO)) {
+        m.getPortate(Categoria.ANTIPASTO).forEach((p) -> {
             antipastoComboBox.addItem(p.getNome());
-        }
-        for (Portata p : m.getPortate(Categoria.PRIMO)) {
+        });
+        m.getPortate(Categoria.PRIMO).forEach((p) -> {
             primoComboBox.addItem(p.getNome());
-        }
-        for (Portata p : m.getPortate(Categoria.SECONDO)) {
+        });
+        m.getPortate(Categoria.SECONDO).forEach((p) -> {
             secondoComboBox.addItem(p.getNome());
-        }
-        for (Portata p : m.getPortate(Categoria.DESSERT)) {
+        });
+        m.getPortate(Categoria.DESSERT).forEach((p) -> {
             dessertComboBox.addItem(p.getNome());
-        }
-        //
+        }); //
         
     }
 
@@ -274,13 +270,8 @@ public class OrdinePane extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void printPrice() {
-        
         double prezzo = 0;
         HashMap<Categoria, ArrayList<Portata>> hm = ((MyController) mc).getPortate();
-        for (Categoria c : Categoria.values()) {
-            //System.out.println(c);
-            //System.out.println(hm.get(c));
-        }
         
         try {
             prezzo += hm.get(Categoria.ANTIPASTO).get(antipastoComboBox.getSelectedIndex()).getPrezzo();
