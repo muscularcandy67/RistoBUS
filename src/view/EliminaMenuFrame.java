@@ -24,6 +24,7 @@ public class EliminaMenuFrame extends javax.swing.JFrame {
     }
     
     private void initList() {
+        this.setTitle("Elimina Menu");
         DefaultListModel dlm = new DefaultListModel();
         ((MyController) mc).getMenus().forEach((m) -> {
             dlm.addElement(m.getNome());

@@ -26,6 +26,7 @@ public class EliminaOrdineFrame extends javax.swing.JFrame {
     }
     
     private void initList() {
+        this.setTitle("Elimina Ordine");
         DefaultListModel dlm = new DefaultListModel();
         ((MyController) mc).getOrdini().forEach((o) -> {
             dlm.addElement(o.toString());

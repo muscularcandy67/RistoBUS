@@ -24,6 +24,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
      * @param mc that thing
      */
     public NuovaPortataFrame(Controller mc, RistoGUI rgui) {
+        this.setTitle("Nuova Portata");
         this.mc = mc;
         this.rgui = rgui;
         initComponents();
@@ -53,7 +54,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
         prezzoTextField = new javax.swing.JTextField();
         idTextField = new javax.swing.JTextField();
         creaPortataButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -79,8 +79,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nuova Portata");
-
         jLabel2.setText("Nome");
 
         jLabel3.setText("ID");
@@ -97,9 +95,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
@@ -112,7 +107,7 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
                             .addComponent(idTextField)
                             .addComponent(categoriaComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 287, Short.MAX_VALUE)
+                        .addGap(0, 284, Short.MAX_VALUE)
                         .addComponent(creaPortataButton)))
                 .addContainerGap())
         );
@@ -120,8 +115,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +218,6 @@ public class NuovaPortataFrame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> categoriaComboBox;
     private javax.swing.JButton creaPortataButton;
     private javax.swing.JTextField idTextField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

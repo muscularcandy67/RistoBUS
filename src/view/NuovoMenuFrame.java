@@ -37,6 +37,7 @@ public class NuovoMenuFrame extends javax.swing.JFrame {
     }
     
     private void initLists() {
+        this.setTitle("Nuovo Menu");
         System.out.println("[== INIT LISTE ==]");
         
         HashMap<Categoria, ArrayList<Portata>> hm = ((MyController) mc).getPortate();
