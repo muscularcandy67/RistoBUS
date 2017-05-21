@@ -64,6 +64,7 @@ public class MyMenuManager implements MenuManager {
             }
         } catch(IOException ioex) {
             ioex.printStackTrace();
+            menus = null;
         }
         return menus;
     }
@@ -73,6 +74,23 @@ public class MyMenuManager implements MenuManager {
         MyPortateManager mpm = new MyPortateManager();
         ArrayList<Menu> old_menu = this.caricaMenu(mpm.caricaPortate());
         old_menu.add(m);
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Menu.txt")));
+            String buffer = "";
+            for (Menu menu : old_menu) {
+                buffer += menu.toFileFormat() + "\n";
+            }
+            bw.write(buffer);
+            bw.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void eliminaMenu(Menu m) {
+        MyPortateManager mpm = new MyPortateManager();
+        ArrayList<Menu> old_menu = this.caricaMenu(mpm.caricaPortate());
+        old_menu.remove(m);
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Menu.txt")));
             String buffer = "";

@@ -44,6 +44,7 @@ public class MyPortateManager implements PortateManager {
             }
         } catch(IOException ioex) {
             ioex.printStackTrace();
+            hm = null;
         }
 
         return hm;
@@ -61,6 +62,27 @@ public class MyPortateManager implements PortateManager {
                 }
                 if (p.getCategoria() == cat) {
                     portate += p.toFileFormat() + "\n";
+                }
+            }
+            //System.out.println(portate);
+            bw.write(portate);
+            bw.close();
+        } catch (IOException ex) {
+            //Logger.getLogger(MyPortateManager.class.getName()).log(Level.SEVERE, null, ex);
+            SwingUserInteractor sui = new SwingUserInteractor();
+            sui.showMessage(ex.toString());
+        }
+    }
+    
+    public void eliminaPortata(Portata p) {
+        try {
+            HashMap<Categoria, ArrayList<Portata>> hm = this.caricaPortate();
+            hm.get(p.getCategoria()).remove(p);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(new File("Portate.txt")));
+            String portate = "";
+            for (Categoria cat : Categoria.values()) {
+                for (Portata portata : hm.get(cat)) {
+                    portate += portata.toFileFormat() + "\n";
                 }
             }
             //System.out.println(portate);

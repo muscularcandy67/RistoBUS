@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package ristobus;
-import controller.MyController;
+import controller.*;
 import model.*;
 
 import model.MyPortateManager;
+import view.RistoGUI;
 
 /**
  *
@@ -15,13 +16,12 @@ import model.MyPortateManager;
  */
 public class RistoBUS {
     
-    //MyController mc;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //mc = new MyController(new MyPortateManager(), new MyMenuManager(), new SwingUserInteractor()); //pm, mm, ui
+        //
     }
     
 }

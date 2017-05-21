@@ -20,10 +20,10 @@ public class RistoGUI extends javax.swing.JFrame {
     
     private view.OrdinePane ordinetab;
     
-    MyController mc;
+    Controller mc;
     
     public RistoGUI() {
-        mc = new MyController(new MyPortateManager(), new MyMenuManager(), new SwingUserInteractor()); //pm, mm, ui
+        this.mc = new MyController(new MyPortateManager(), new MyMenuManager(), new SwingUserInteractor());
         initComponents();
         initPanes();
     }
@@ -57,7 +57,9 @@ public class RistoGUI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         portataMenuItem = new javax.swing.JMenuItem();
         menuMenuItem = new javax.swing.JMenuItem();
-        ordineMenu = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        eliminaOrdineMenuItem = new javax.swing.JMenuItem();
+        eliminaMenuMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 204, 204));
@@ -65,6 +67,7 @@ public class RistoGUI extends javax.swing.JFrame {
 
         jMenu1.setText("Nuovo");
 
+        portataMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         portataMenuItem.setText("Nuova Portata");
         portataMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +76,7 @@ public class RistoGUI extends javax.swing.JFrame {
         });
         jMenu1.add(portataMenuItem);
 
+        menuMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         menuMenuItem.setText("Nuovo Menu");
         menuMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,8 +87,26 @@ public class RistoGUI extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        ordineMenu.setText("Ordine");
-        jMenuBar1.add(ordineMenu);
+        jMenu2.setText("Elimina");
+
+        eliminaOrdineMenuItem.setText("Elimina Ordine");
+        eliminaOrdineMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminaOrdineMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(eliminaOrdineMenuItem);
+
+        eliminaMenuMenuItem.setText("Elimina Menu");
+        eliminaMenuMenuItem.setEnabled(false);
+        eliminaMenuMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminaMenuMenuItemActionPerformed(evt);
+            }
+        });
+        jMenu2.add(eliminaMenuMenuItem);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -109,6 +131,14 @@ public class RistoGUI extends javax.swing.JFrame {
     private void menuMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuMenuItemActionPerformed
         NuovoMenuFrame.main(mc, this);
     }//GEN-LAST:event_menuMenuItemActionPerformed
+
+    private void eliminaOrdineMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaOrdineMenuItemActionPerformed
+        EliminaOrdineFrame.main(mc);
+    }//GEN-LAST:event_eliminaOrdineMenuItemActionPerformed
+
+    private void eliminaMenuMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminaMenuMenuItemActionPerformed
+        EliminaMenuFrame.main(mc);
+    }//GEN-LAST:event_eliminaMenuMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,10 +165,12 @@ public class RistoGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem eliminaMenuMenuItem;
+    private javax.swing.JMenuItem eliminaOrdineMenuItem;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem menuMenuItem;
-    private javax.swing.JMenu ordineMenu;
     private javax.swing.JMenuItem portataMenuItem;
     // End of variables declaration//GEN-END:variables
 }

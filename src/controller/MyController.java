@@ -23,6 +23,10 @@ public class MyController implements Controller {
         menus = this.getMenus();
         portate = pm.caricaPortate();
         ordini = new ArrayList<>();
+        if (menus == null || portate == null) {
+            u.showMessage("Errore nel caricamento delle portate e dei menu");
+            u.shutDownApplication();
+        }
     }
 
     public ArrayList<Menu> getMenus() {
@@ -85,7 +89,43 @@ public class MyController implements Controller {
     public HashMap<Categoria, ArrayList<Portata>> getPortate() {
         return portate;
     }
+    
+    public void eliminaOrdine(int pos) {
+        this.ordini.remove(pos);
+    }
+    
+    public ArrayList<Ordine> getOrdini() {
+        return ordini;
+    }
+    
+    public void eliminaTuttiOrdini() {
+        this.ordini.clear();
+    }
         
-        
+    public boolean eliminaMenu(int pos) {
+        if (menus.size() > pos && pos>=0) {
+            ((MyMenuManager) mm).eliminaMenu(menus.get(pos));
+            menus = this.getMenus();
+            return true;
+        }
+        return false;
+    }  
+    
+    public boolean eliminaPortata(Portata p) {
+        if (p != null && (esistePortata(p))) {
+            //((MyMenuManager) mm).elimina(p);
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean esistePortata(Portata p) {
+        for (Categoria c : Categoria.values()) {
+            if (portate.get(c).stream().anyMatch((po) -> (p.equals(po)))) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

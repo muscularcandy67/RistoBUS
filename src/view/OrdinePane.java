@@ -211,6 +211,7 @@ public class OrdinePane extends javax.swing.JPanel {
 
     private void menuComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuComboBoxActionPerformed
         this.populateComboBoxes();
+        printPrice();
     }//GEN-LAST:event_menuComboBoxActionPerformed
 
     private void ordinaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ordinaButtonActionPerformed
