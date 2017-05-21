@@ -22,6 +22,10 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Nuovo Menu"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="newMenuMenuMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newMenuMenuActionPerformed"/>
+          </Events>
         </Menu>
       </SubComponents>
     </Menu>

@@ -70,6 +70,16 @@ public class RistoGUI extends javax.swing.JFrame {
         jMenuBar1.add(newPortataMenu);
 
         newMenuMenu.setText("Nuovo Menu");
+        newMenuMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                newMenuMenuMouseClicked(evt);
+            }
+        });
+        newMenuMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMenuMenuActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(newMenuMenu);
 
         setJMenuBar(jMenuBar1);
@@ -96,6 +106,14 @@ public class RistoGUI extends javax.swing.JFrame {
     private void newPortataMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPortataMenuActionPerformed
         
     }//GEN-LAST:event_newPortataMenuActionPerformed
+
+    private void newMenuMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newMenuMenuActionPerformed
+
+    private void newMenuMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newMenuMenuMouseClicked
+        NuovoMenuFrame.main(mc);
+    }//GEN-LAST:event_newMenuMenuMouseClicked
 
     /**
      * @param args the command line arguments

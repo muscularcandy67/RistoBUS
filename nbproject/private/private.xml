@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/S:/Projects/RistoBUS/Portate.txt</file>
-            <file>file:/S:/Projects/RistoBUS/src/model/Categoria.java</file>
-            <file>file:/S:/Projects/RistoBUS/src/view/OrdinePane.java</file>
-            <file>file:/S:/Projects/RistoBUS/src/model/MyMenuManager.java</file>
-            <file>file:/S:/Projects/RistoBUS/src/model/Menu.java</file>
-            <file>file:/S:/Projects/RistoBUS/Menu.txt</file>
-            <file>file:/S:/Projects/RistoBUS/src/view/NuovaPortataFrame.java</file>
-            <file>file:/S:/Projects/RistoBUS/src/model/MyPortateManager.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/ristobus/RistoBUS.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/Menu.txt</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/model/Portata.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/view/RistoGUI.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/view/NuovaPortataFrame.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/model/MyPortateManager.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/model/Ordine.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/view/OrdinePane.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/model/MyMenuManager.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/model/Menu.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/controller/MyController.java</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/Portate.txt</file>
+            <file>file:/C:/Users/smart/Documents/Projects/RistoBUS/src/view/NuovoMenuFrame.java</file>
         </group>
     </open-files>
 </project-private>
